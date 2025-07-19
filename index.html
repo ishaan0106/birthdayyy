@@ -41,12 +41,28 @@
   top: 0;
   left: 0;
   animation: drift 60s linear infinite;
+} 
+.shooting-star {
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(-45deg, #ffd700, rgba(255,255,255,0));
+  animation: shooting 3s ease-in-out infinite;
 }
 
-  header h1, header p, section h2 {
-  text-shadow: 0 0 10px #ffd700;
-}  
-
+@keyframes shooting {
+  0% {
+    transform: translateX(0) translateY(0) rotate(45deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-800px) translateY(800px) rotate(45deg);
+    opacity: 0;
+  }
+}
 @keyframes drift {
   0% { transform: translateX(-300px) translateY(0); }
   100% { transform: translateX(100vw) translateY(0); }
@@ -183,6 +199,14 @@
   cloud.style.animationDelay = Math.random() * 30 + 's';
   starsContainer.appendChild(cloud);
 } 
+    for (let i = 0; i < 5; i++) {
+  const shootingStar = document.createElement('div');
+  shootingStar.className = 'shooting-star';
+  shootingStar.style.top = Math.random() * 100 + '%';
+  shootingStar.style.left = Math.random() * 100 + '%';
+  shootingStar.style.animationDelay = Math.random() * 10 + 's';
+  starsContainer.appendChild(shootingStar);
+}
   </script>
 </body>
 </html>
