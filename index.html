@@ -23,7 +23,7 @@
       position: absolute;
       width: 2px;
       height: 2px;
-      background: radial-gradient(circle, #ffd700, #ffcc00, #ffaa00);
+      background: white;
       border-radius: 50%;
       animation: twinkle 2s infinite ease-in-out alternate;
     }
@@ -32,6 +32,25 @@
       from { opacity: 0; transform: scale(1); }
       to { opacity: 1; transform: scale(1.5); }
     }
+    .cloud {
+  position: fixed;
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.1), transparent);
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  animation: drift 60s linear infinite;
+}
+
+  header h1, header p, section h2 {
+  text-shadow: 0 0 10px #ffd700;
+}  
+
+@keyframes drift {
+  0% { transform: translateX(-300px) translateY(0); }
+  100% { transform: translateX(100vw) translateY(0); }
+}
 
     body {
       margin: 0;
@@ -157,6 +176,13 @@
       star.style.animationDuration = (Math.random() * 2 + 1) + 's';
       starsContainer.appendChild(star);
     }
+    for (let i = 0; i < 3; i++) {
+  const cloud = document.createElement('div');
+  cloud.className = 'cloud';
+  cloud.style.top = Math.random() * 50 + '%';
+  cloud.style.animationDelay = Math.random() * 30 + 's';
+  starsContainer.appendChild(cloud);
+} 
   </script>
 </body>
 </html>
